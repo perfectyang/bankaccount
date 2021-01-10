@@ -37,7 +37,10 @@
                 android:drawablePadding="5dp"
                 android:padding="10dp"
                 android:background="@null"
+                android:singleLine="true"
                 android:textSize="20sp"
+
+                android:scrollbars="horizontal"
                 android:textColor="@color/black"
                 android:gravity="center_vertical"
                 android:layout_marginBottom="3dp"
@@ -93,6 +96,7 @@
                 android:textStyle="bold"
                 />
             <TextView
+                android:id="@+id/register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
@@ -101,6 +105,7 @@
                 android:textColor="#fec500"
                 android:layout_alignParentRight="true"
                 android:textStyle="bold"
+
                 />
         </RelativeLayout>
 
@@ -109,20 +114,7 @@
             android:orientation="horizontal"
             android:layout_height="wrap_content">
             <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="10dp"
-                android:layout_marginTop="30dp"
-                android:text="注册"
-                android:textColor="#ffffff"
-                android:textStyle="bold"
-                android:background="@drawable/login_btn_bg"
-                android:textSize="20sp"
-                android:onClick="register"
-                />
-
-            <Button
+                android:id="@+id/login"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
@@ -133,10 +125,30 @@
                 android:textStyle="bold"
                 android:background="@drawable/login_btn_bg"
                 android:textSize="20sp"
-                android:onClick="onClick"
+
                 />
 
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/delete"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_weight="1"
+                android:layout_marginTop="30dp"
+                android:text="删除账户"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:background="@drawable/login_btn_bg"
+                android:textSize="20sp"
+                />
+
+        </LinearLayout>
+
 
 
     </LinearLayout>

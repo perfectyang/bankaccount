@@ -20,6 +20,8 @@ public class Mydatabase extends SQLiteOpenHelper {
         db.execSQL(sql);
     }
 
+
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 

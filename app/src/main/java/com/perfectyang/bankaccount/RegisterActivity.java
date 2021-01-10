@@ -8,50 +8,93 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.perfectyang.bankaccount.mydb.Mydatabase;
 
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends BaseActivity implements View.OnClickListener {
     private SQLiteDatabase database;
     private EditText username,password;
+    private TextView register;
+    private Button deleteBtn, loginBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
         initView();
         initDatabase();
     }
 
-    private void initView() {
+    @Override
+    protected int initLayout() {
+        return R.layout.activity_register;
+    }
+
+    public void initView() {
         username = findViewById(R.id.user);
         password = findViewById(R.id.password);
+
+        loginBtn = findViewById(R.id.login);
+        register = findViewById(R.id.register);
+        deleteBtn = findViewById(R.id.delete);
+
+        loginBtn.setOnClickListener(this);
+        register.setOnClickListener(this);
+        deleteBtn.setOnClickListener(this);
     }
 
     public void onClick(View v) {
         int id = v.getId();
-//        insert();
-        login();
-    }
 
-    private void login () {
-        String sql = "select * from user where username=? and password=?";
-        Cursor cursor = database.rawQuery(sql, new String[]{username.getText().toString(), password.getText().toString()});
-        if (cursor.getCount() > 0) {
-            Intent intent = new Intent(RegisterActivity.this, BankListActivity.class);
-            startActivity(intent);
+        String user = username.getText().toString().trim();
+        String pwd = password.getText().toString().trim();
+
+        if (user == null || user.length() == 0) {
+            showToast("用户名不能为空!!");
+        } else if (pwd == null || pwd.length() == 0) {
+            showToast("密码不能为空!!");
         } else {
-            Toast.makeText(RegisterActivity.this, "账号密码不正确，请重新输入", Toast.LENGTH_SHORT).show();
+            if (id == R.id.login) {
+                login(user, pwd);
+            } else if (id == R.id.register) {
+                register(user, pwd);
+            } else if (id == R.id.delete) {
+                deletUser(user, pwd);
+            }
+
         }
     }
 
-    public void register (View v) {
-        String sql = "insert into user(username, password)values(?,?)";
-        database.execSQL(sql, new Object[]{username.getText().toString(), password.getText().toString()});
-        Toast.makeText(this, "注册成功", Toast.LENGTH_SHORT).show();
+    private void login (String username, String password) {
+        String sql = "select * from user where username=? and password=?";
+        Cursor cursor = database.rawQuery(sql, new String[]{username, password});
+        if (cursor.getCount() > 0) {
+            insertVal("token", username + password);
+            navigateToWithFlag(BankListActivity.class,
+                    Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            showToast("登录成功");
+        } else {
+            showToast("登录失败");
+        }
     }
+
+    public void register (String username, String password) {
+        String sql = "insert into user(username, password)values(?,?)";
+        database.execSQL(sql, new Object[]{username, password});
+        showToast("注册成功");
+    }
+
+
+
+    public int deletUser(String username, String password){
+        int i = database.delete("user", "username=? and password=?", new String[]{username, password});
+        showToast("删除成功");
+        return i;
+    }
+
 
 
     public void onSearch (View v) {
