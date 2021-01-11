@@ -24,8 +24,17 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initIsLogin();
         initView();
         initDatabase();
+    }
+
+    private void initIsLogin() {
+        String token = findByKey("token");
+//        if(!token.isEmpty()) {
+//            navigateToWithFlag(FingerActivity.class,
+//                    Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+//        }
     }
 
     @Override
@@ -73,7 +82,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         Cursor cursor = database.rawQuery(sql, new String[]{username, password});
         if (cursor.getCount() > 0) {
             insertVal("token", username + password);
-            navigateToWithFlag(BankListActivity.class,
+            navigateToWithFlag(FingerActivity.class,
                     Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             showToast("登录成功");
         } else {
