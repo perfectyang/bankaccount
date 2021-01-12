@@ -13,7 +13,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.perfectyang.bankaccount.mydb.DBManager;
 import com.perfectyang.bankaccount.mydb.Mydatabase;
+import com.perfectyang.bankaccount.mydb.User;
 
 
 public class RegisterActivity extends BaseActivity implements View.OnClickListener {
@@ -26,7 +28,6 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         initIsLogin();
         initView();
-        initDatabase();
     }
 
     private void initIsLogin() {
@@ -71,18 +72,20 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             } else if (id == R.id.register) {
                 register(user, pwd);
             } else if (id == R.id.delete) {
-                deletUser(user, pwd);
+//                deletUser(user, pwd);
+//                DBManager.register(user, pwd);
             }
 
         }
     }
 
     private void login (String username, String password) {
-        String sql = "select * from user where username=? and password=?";
-        Cursor cursor = database.rawQuery(sql, new String[]{username, password});
-        if (cursor.getCount() > 0) {
+        boolean bool = DBManager.login(username, password);
+        if (bool) {
             insertVal("token", username + password);
-            navigateToWithFlag(FingerActivity.class,
+            User user = DBManager.findUser(username, password);
+            insertVal("user_id", user.getId() + "");
+            navigateToWithFlag(AccountListActivity.class,
                     Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             showToast("登录成功");
         } else {
@@ -91,37 +94,8 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     }
 
     public void register (String username, String password) {
-        String sql = "insert into user(username, password)values(?,?)";
-        database.execSQL(sql, new Object[]{username, password});
+        DBManager.register(username, password);
         showToast("注册成功");
-    }
-
-
-
-    public int deletUser(String username, String password){
-        int i = database.delete("user", "username=? and password=?", new String[]{username, password});
-        showToast("删除成功");
-        return i;
-    }
-
-
-
-    public void onSearch (View v) {
-        String sql = "select * from user";
-        Cursor cursor = database.rawQuery(sql, new String[]{});
-        while (cursor.moveToNext()) {
-            String name = cursor.getString(cursor.getColumnIndex("username"));
-            String pwd = cursor.getString(cursor.getColumnIndex("password"));
-            if (name.equalsIgnoreCase("perfectyang")) {
-                Log.d("name===", name);
-                Log.d("name===pwd---", pwd);
-            }
-        }
-    }
-
-    private void initDatabase() {
-        Mydatabase mydatabase = new Mydatabase(RegisterActivity.this);
-        database = mydatabase.getWritableDatabase();
     }
 
 

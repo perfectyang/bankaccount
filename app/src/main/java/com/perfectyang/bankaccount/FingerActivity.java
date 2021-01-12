@@ -32,16 +32,21 @@ public class FingerActivity extends BaseActivity {
         manager = (FingerprintManager) this.getSystemService(Context.FINGERPRINT_SERVICE);
         mKeyManager = (KeyguardManager) this.getSystemService(Context.KEYGUARD_SERVICE);
         btn_finger = findViewById(R.id.btn_activity_main_finger);
+        initFinger();
         btn_finger.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isFinger()) {
-                    showToast("请进行指纹识别");
-                    startListening(null);
-                }
+                initFinger();
             }
         });
 
+    }
+
+    private void initFinger () {
+        if (isFinger()) {
+            showToast("请进行指纹识别");
+            startListening(null);
+        }
     }
 
     @Override
@@ -97,7 +102,7 @@ public class FingerActivity extends BaseActivity {
         @Override
         public void onAuthenticationSucceeded(FingerprintManager.AuthenticationResult result) {
 //            showToast("指纹识别成功");
-            navigateToWithFlag(BankListActivity.class,
+            navigateToWithFlag(AccountListActivity.class,
                     Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         }
 
@@ -121,26 +126,29 @@ public class FingerActivity extends BaseActivity {
      * 锁屏密码
      */
     private void showAuthenticationScreen() {
-        navigateTo(RegisterActivity.class);
+//        navigateTo(RegisterActivity.class);
 
-//        Intent intent = mKeyManager.createConfirmDeviceCredentialIntent("finger", "指纹识别");
-//        if (intent != null) {
-//            startActivityForResult(intent, REQUEST_CODE_CONFIRM_DEVICE_CREDENTIALS);
-//        }
+        Intent intent = mKeyManager.createConfirmDeviceCredentialIntent("用户登录", "指纹识别");
+        if (intent != null) {
+            startActivityForResult(intent, REQUEST_CODE_CONFIRM_DEVICE_CREDENTIALS);
+        }
     }
 
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (requestCode == REQUEST_CODE_CONFIRM_DEVICE_CREDENTIALS) {
-//            // Challenge completed, proceed with using cipher
-//            if (resultCode == RESULT_OK) {
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_CONFIRM_DEVICE_CREDENTIALS) {
+            // Challenge completed, proceed with using cipher
+            if (resultCode == RESULT_OK) {
 //                showToast("识别成功");
-//            } else {
-//                showToast("识别失败");
-//            }
-//        }
-//    }
+                navigateToWithFlag(AccountListActivity.class,
+                        Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            } else {
+                navigateToWithFlag(RegisterActivity.class, Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                showToast("识别失败");
+            }
+        }
+    }
 
     private void Log(String tag, String msg) {
         Log.d(tag, msg);

@@ -3,6 +3,7 @@
     package="com.perfectyang.bankaccount">
 
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+
     <application
         android:name=".BaseApp"
         android:allowBackup="true"
@@ -11,8 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BankAccount">
-        <activity android:name=".FingerActivity"></activity>
-        <activity android:name=".BankListActivity" />
+        <activity android:name=".AccountListActivity"></activity>
+        <activity android:name=".AddAccountActivity" />
+        <activity android:name=".FingerActivity" />
+        <activity android:name=".UserListActivity" />
         <activity android:name=".RegisterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

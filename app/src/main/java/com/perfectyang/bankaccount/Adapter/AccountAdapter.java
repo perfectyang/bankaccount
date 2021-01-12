@@ -1,6 +1,7 @@
 package com.perfectyang.bankaccount.Adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,13 +56,15 @@ public class AccountAdapter extends BaseAdapter {
         User curUser = mDatas.get(position);
         holder.username.setText(curUser.getUsername());
         holder.password.setText(curUser.getPassword());
+        holder.userId.setText(curUser.getId() + "");
         return convertView;
     }
     class ViewHolder{
-        TextView username,password;
+        TextView username,password, userId;
         public ViewHolder(View view){
             username = view.findViewById(R.id.username);
             password = view.findViewById(R.id.password);
+            userId = view.findViewById(R.id.user_id);
         }
     }
 }

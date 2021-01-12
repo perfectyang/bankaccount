@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".BankListActivity">
+    tools:context=".UserListActivity">
 
     <EditText
         android:id="@+id/content"
@@ -13,18 +13,11 @@
         android:layout_height="wrap_content"
         android:text="欢迎进来首页"
         />
-<!--    <Button-->
-<!--        android:id="@+id/copy"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="复制"-->
-<!--        android:textSize="20sp"-->
-<!--        />-->
-
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:scrollbars="none"
         />
 
 </LinearLayout>
