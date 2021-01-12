@@ -20,7 +20,10 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.perfectyang.bankaccount.Adapter.AccountAdapter;
+import com.perfectyang.bankaccount.mydb.DBManager;
 import com.perfectyang.bankaccount.mydb.Mydatabase;
+import com.perfectyang.bankaccount.mydb.User;
 
 import org.json.JSONObject;
 
@@ -31,7 +34,8 @@ public class BankListActivity extends AppCompatActivity {
     private Button copy;
     private TextView tvw;
     private EditText editText;
-    private ArrayList<String> data = new ArrayList<>();
+    private List<User> data = new ArrayList<>();
+    private AccountAdapter adapter;
     private ListView listvw;
     ClipboardManager clipboard;
     private SQLiteDatabase database;
@@ -40,24 +44,12 @@ public class BankListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bank_list);
-        initDatabase();
         getAccountList();
         initView();
     }
 
-    private void initDatabase() {
-        Mydatabase mydatabase = new Mydatabase(BankListActivity.this);
-        database = mydatabase.getWritableDatabase();
-    }
-
     private void getAccountList () {
-        String sql = "select * from user";
-        Cursor cursor = database.rawQuery(sql, new String[]{});
-        while (cursor.moveToNext()) {
-            String name = cursor.getString(cursor.getColumnIndex("username"));
-            String pwd = cursor.getString(cursor.getColumnIndex("password"));
-            data.add(name + "=" + pwd);
-        }
+          data = DBManager.userList();
     }
 
     private void setCopy (String content) {
@@ -98,16 +90,12 @@ public class BankListActivity extends AppCompatActivity {
 
     private void initView() {
         listvw = findViewById(R.id.listView);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data);
+        adapter = new AccountAdapter(this, data);
         listvw.setAdapter(adapter);
         listvw.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String str = data.get(position);
-
-                String[] list = str.split("=");
-//                setCopy(str);
-                int i = deletUser(list[0], list[1]);
+                User User = data.get(position);
                 data.remove(position);
                 adapter.notifyDataSetChanged();
             }
