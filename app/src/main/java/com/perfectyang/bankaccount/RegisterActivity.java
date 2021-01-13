@@ -83,8 +83,8 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         boolean bool = DBManager.login(username, password);
         if (bool) {
             insertVal("token", username + password);
-            User user = DBManager.findUser(username, password);
-            insertVal("user_id", user.getId() + "");
+//            User user = DBManager.findUser(username, password);
+//            insertVal("user_id", user.getId() + "");
             navigateToWithFlag(AccountListActivity.class,
                     Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             showToast("登录成功");
