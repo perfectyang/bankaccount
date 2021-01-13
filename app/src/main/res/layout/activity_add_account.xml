@@ -70,6 +70,8 @@
             android:layout_weight="1"
             android:padding="10dp"
             android:hint="请输入有效期"
+            android:inputType="number"
+            android:maxLength="4"
             android:layout_height="wrap_content"
             />
 
@@ -92,6 +94,8 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:padding="10dp"
+            android:inputType="number"
+            android:maxLength="3"
             android:hint="银行卡背面三位数字"
             android:layout_height="wrap_content"
             />

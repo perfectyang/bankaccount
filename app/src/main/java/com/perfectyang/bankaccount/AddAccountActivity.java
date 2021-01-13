@@ -50,8 +50,8 @@ public class AddAccountActivity extends BaseActivity implements View.OnClickList
                 newFragment.setCallBack(new CallBack() {
                     @Override
                     public void getResult(int year, int month, int dayOfMonth) {
-                        valid_time.setText(year + "" + (month + 1) + "" + dayOfMonth);
-                        bankAccount.setValid_time(year + "" + (month + 1) + "" + dayOfMonth);
+                        valid_time.setText((month + 1) + "" + dayOfMonth);
+                        bankAccount.setValid_time((month + 1) + "" + dayOfMonth);
                         showToast(year + "====" + (month + 1) + "====" + dayOfMonth);
                     }
                 });

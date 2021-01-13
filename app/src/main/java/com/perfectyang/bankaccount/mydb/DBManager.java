@@ -110,8 +110,9 @@ public class DBManager {
                     cursor.getString(cursor.getColumnIndex("bank_name")),
                     cursor.getString(cursor.getColumnIndex("bank_number")),
                     cursor.getString(cursor.getColumnIndex("valid_time")),
-                    cursor.getString(cursor.getColumnIndex("back_card_trhee"))
+                    cursor.getString(cursor.getColumnIndex("back_card_three"))
             );
+            data.add(bank);
         }
         return data;
     }
