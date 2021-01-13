@@ -84,5 +84,15 @@ public class DBManager {
         return data.get(0);
     }
 
+    public static void saveBankAccount (BankAccount bankAccount) {
+        ContentValues values = new ContentValues();
+        values.put("user_id", bankAccount.getUser_id());
+        values.put("bank_name", bankAccount.getBank_name());
+        values.put("bank_number", bankAccount.getBank_number());
+        values.put("valid_time", bankAccount.getValid_time());
+        values.put("back_card_three", bankAccount.getBack_card_tree());
+        database.insert("bankAccount", null, values);
+    }
+
 
 }

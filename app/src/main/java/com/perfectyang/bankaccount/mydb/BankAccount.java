@@ -2,6 +2,9 @@ package com.perfectyang.bankaccount.mydb;
 
 public class BankAccount {
     private int id;
+
+
+
     private int user_id;
     private String bank_name;
     private String bank_number;
@@ -31,6 +34,29 @@ public class BankAccount {
     public String getBack_card_tree() {
         return back_card_tree;
     }
+
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
+
+    public void setBank_name(String bank_name) {
+        this.bank_name = bank_name;
+    }
+
+    public void setBank_number(String bank_number) {
+        this.bank_number = bank_number;
+    }
+
+    public void setValid_time(String valid_time) {
+        this.valid_time = valid_time;
+    }
+
+    public void setBack_card_tree(String back_card_tree) {
+        this.back_card_tree = back_card_tree;
+    }
+
+
 
 
 
