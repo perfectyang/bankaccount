@@ -94,5 +94,27 @@ public class DBManager {
         database.insert("bankAccount", null, values);
     }
 
+    /**
+     * 获取访用户的银行卡信息
+     * @param userId 用户id
+     * @return ArrayList
+     */
+
+    public static ArrayList<BankAccount> accountList (String userId) {
+        String sql = "select * from bankAccount where user_id=?";
+        Cursor cursor = database.rawQuery(sql, new String[]{userId});
+        ArrayList<BankAccount> data = new ArrayList<>();
+        while (cursor.moveToNext()) {
+            BankAccount bank = new BankAccount(
+                    cursor.getInt(cursor.getColumnIndex("user_id")),
+                    cursor.getString(cursor.getColumnIndex("bank_name")),
+                    cursor.getString(cursor.getColumnIndex("bank_number")),
+                    cursor.getString(cursor.getColumnIndex("valid_time")),
+                    cursor.getString(cursor.getColumnIndex("back_card_trhee"))
+            );
+        }
+        return data;
+    }
+
 
 }
