@@ -1,4 +1,4 @@
-package com.perfectyang.bankaccount;
+package com.perfectyang.bankaccount.activity;
 
 import android.app.AlertDialog;
 import android.content.Context;

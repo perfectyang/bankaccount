@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:background="@drawable/login_bg"
     android:padding="10dp"
+    android:layout_margin="10dp"
     >
     <LinearLayout
         android:id="@+id/bank_name_wrap"

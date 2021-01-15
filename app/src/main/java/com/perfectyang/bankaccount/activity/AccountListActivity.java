@@ -1,30 +1,22 @@
-package com.perfectyang.bankaccount;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.perfectyang.bankaccount.activity;
 
 import android.app.AlertDialog;
-import android.content.ClipData;
 import android.content.ClipboardManager;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.perfectyang.bankaccount.Adapter.AccountAdapter;
 import com.perfectyang.bankaccount.Adapter.BankListAdapter;
+import com.perfectyang.bankaccount.R;
 import com.perfectyang.bankaccount.mydb.BankAccount;
 import com.perfectyang.bankaccount.mydb.DBManager;
-import com.perfectyang.bankaccount.mydb.User;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class AccountListActivity extends BaseActivity implements View.OnClickListener {
     ImageButton imageButton;
@@ -109,7 +101,7 @@ public class AccountListActivity extends BaseActivity implements View.OnClickLis
                 navigateWithParamTo(AddAccountActivity.class, userId);
                 break;
             case  R.id.get_more:
-                navigateTo(ChooseBankActivity.class);
+                navigateWithParamTo(ChooseBankActivity.class, userId);
                 break;
         }
     }

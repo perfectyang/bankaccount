@@ -2,14 +2,8 @@ package com.perfectyang.bankaccount.mydb;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
-import android.view.View;
-
-import com.perfectyang.bankaccount.FingerActivity;
-import com.perfectyang.bankaccount.RegisterActivity;
 
 import java.util.ArrayList;
 import java.util.List;

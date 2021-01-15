@@ -1,20 +1,15 @@
-package com.perfectyang.bankaccount;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.perfectyang.bankaccount.activity;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.perfectyang.bankaccount.R;
 import com.perfectyang.bankaccount.mydb.DBManager;
-import com.perfectyang.bankaccount.mydb.Mydatabase;
 import com.perfectyang.bankaccount.mydb.User;
 
 

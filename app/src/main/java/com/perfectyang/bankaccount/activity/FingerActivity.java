@@ -1,6 +1,5 @@
-package com.perfectyang.bankaccount;
+package com.perfectyang.bankaccount.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
@@ -13,10 +12,10 @@ import android.os.Bundle;
 import android.os.CancellationSignal;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.perfectyang.bankaccount.R;
 
 public class FingerActivity extends BaseActivity {
     ImageView btn_finger;

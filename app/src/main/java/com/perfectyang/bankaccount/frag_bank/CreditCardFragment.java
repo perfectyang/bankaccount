@@ -1,23 +1,20 @@
 package com.perfectyang.bankaccount.frag_bank;
 
-import android.os.Bundle;
+import com.perfectyang.bankaccount.mydb.BankAccount;
+import com.perfectyang.bankaccount.mydb.DBManager;
 
-import androidx.fragment.app.Fragment;
+import java.util.List;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import com.perfectyang.bankaccount.R;
-
-public class CreditCardFragment extends Fragment {
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+public class CreditCardFragment extends BaseCardFragment {
+    String userId;
+    public CreditCardFragment (String userId) {
+        this.userId = userId;
     }
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_credit_card, container, false);
+    public void loadData () {
+        super.loadData();
+        List<BankAccount> inlist = DBManager.accountList(userId);
+        bankAccountList.addAll(inlist);
+        adapter.notifyDataSetChanged();
     }
 }

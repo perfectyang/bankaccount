@@ -3,12 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".frag_bank.cashCardFragment">
+    tools:context=".frag_bank.CreditCardFragment"
+    android:padding="10dp"
+    android:layout_margin="10dp">
 
-    <TextView
+    <ListView
+        android:id="@+id/card_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="银行卡" />
+        android:divider="@null"
+        android:dividerHeight="10dp"
+        />
 
 </LinearLayout>

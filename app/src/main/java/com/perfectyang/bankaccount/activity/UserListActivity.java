@@ -1,6 +1,4 @@
-package com.perfectyang.bankaccount;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.perfectyang.bankaccount.activity;
 
 import android.app.AlertDialog;
 import android.content.ClipData;
@@ -18,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.perfectyang.bankaccount.Adapter.AccountAdapter;
+import com.perfectyang.bankaccount.R;
 import com.perfectyang.bankaccount.mydb.DBManager;
 import com.perfectyang.bankaccount.mydb.User;
 

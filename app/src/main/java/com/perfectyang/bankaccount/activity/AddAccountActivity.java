@@ -1,21 +1,18 @@
-package com.perfectyang.bankaccount;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
+package com.perfectyang.bankaccount.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.perfectyang.bankaccount.R;
 import com.perfectyang.bankaccount.mydb.BankAccount;
 import com.perfectyang.bankaccount.mydb.DBManager;
-import com.perfectyang.bankaccount.utils.CallBack;
-import com.perfectyang.bankaccount.utils.DatePickerFragment;
 import com.perfectyang.bankaccount.utils.DialogTimer;
 
 public class AddAccountActivity extends BaseActivity implements View.OnClickListener {
@@ -23,6 +20,9 @@ public class AddAccountActivity extends BaseActivity implements View.OnClickList
     private Button save_btn, cancel_btn;
     private EditText bank_name, bank_number, bank_card_three;
     private BankAccount bankAccount = new BankAccount();
+    RadioGroup radioGroup;
+    RadioButton loadBtn, creditBtn;
+    LinearLayout bank_card_three_wrap, valid_time_wrap;
     String userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +40,28 @@ public class AddAccountActivity extends BaseActivity implements View.OnClickList
         bank_name = findViewById(R.id.bank_name);
         bank_number = findViewById(R.id.bank_number);
         bank_card_three = findViewById(R.id.bank_card_three);
+
+        radioGroup = findViewById(R.id.card_category);
+        loadBtn = findViewById(R.id.load);
+        creditBtn = findViewById(R.id.credit);
+
+        bank_card_three_wrap = findViewById(R.id.bank_card_three_wrap);
+        valid_time_wrap = findViewById(R.id.valid_time_wrap);
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == loadBtn.getId()) {
+                    showToast("信用卡");
+                    valid_time_wrap.setVisibility(View.VISIBLE);
+                    bank_card_three_wrap.setVisibility(View.VISIBLE);
+                } else if (checkedId == creditBtn.getId()) {
+                    showToast("银行卡");
+                    valid_time_wrap.setVisibility(View.GONE);
+                    bank_card_three_wrap.setVisibility(View.GONE);
+                }
+            }
+        });
 
         Intent intent = getIntent();
         userId = intent.getStringExtra("user_id");

@@ -5,19 +5,19 @@
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
 
     <application
-        android:name=".BaseApp"
+        android:name=".activity.BaseApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BankAccount">
-        <activity android:name=".ChooseBankActivity"></activity>
-        <activity android:name=".AccountListActivity" />
-        <activity android:name=".AddAccountActivity" />
-        <activity android:name=".FingerActivity" />
-        <activity android:name=".UserListActivity" />
-        <activity android:name=".RegisterActivity">
+        <activity android:name=".activity.ChooseBankActivity"></activity>
+        <activity android:name=".activity.AccountListActivity" />
+        <activity android:name=".activity.AddAccountActivity" />
+        <activity android:name=".activity.FingerActivity" />
+        <activity android:name=".activity.UserListActivity" />
+        <activity android:name=".activity.RegisterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
