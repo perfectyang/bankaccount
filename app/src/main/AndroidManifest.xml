@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BankAccount">
-        <activity android:name=".AccountListActivity"></activity>
+        <activity android:name=".ChooseBankActivity"></activity>
+        <activity android:name=".AccountListActivity" />
         <activity android:name=".AddAccountActivity" />
         <activity android:name=".FingerActivity" />
         <activity android:name=".UserListActivity" />

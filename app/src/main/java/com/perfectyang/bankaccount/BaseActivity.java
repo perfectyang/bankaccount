@@ -40,6 +40,13 @@ public abstract class BaseActivity extends AppCompatActivity {
         startActivity(in);
     }
 
+    public void navigateWithParamTo(Class cls, String id) {
+        Intent in = new Intent(mContext, cls);
+        in.putExtra("user_id", id);
+        startActivity(in);
+    }
+
+
     public void navigateToWithFlag(Class cls, int flags) {
         Intent in = new Intent(mContext, cls);
         in.setFlags(flags);

@@ -7,6 +7,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -31,18 +32,26 @@ public class AccountListActivity extends BaseActivity implements View.OnClickLis
     BankListAdapter adapter;
     ArrayList<BankAccount> data = new ArrayList<>();
     ClipboardManager  clipboard;
+    String userId;
+    TextView get_more;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(initLayout());
         imageButton = findViewById(R.id.addAccount);
         imageButton.setOnClickListener(this);
+        get_more = findViewById(R.id.get_more);
+        get_more.setOnClickListener(this);
         getDataList();
         initView();
     }
 
     private void getDataList() {
-        data = DBManager.accountList(findByKey("user_id"));
+        Intent intent = getIntent();
+        userId = intent.getStringExtra("user_id");
+//        data = DBManager.accountList(findByKey("user_id"));
+        data = DBManager.accountList(userId);
+
     }
 
     private void initView() {
@@ -56,7 +65,6 @@ public class AccountListActivity extends BaseActivity implements View.OnClickLis
                 return true;
             }
         });
-
     }
 
     private void Alert(BankAccount account) {
@@ -82,7 +90,7 @@ public class AccountListActivity extends BaseActivity implements View.OnClickLis
     @Override
     protected void onResume() {
         super.onResume();
-        ArrayList<BankAccount> list = DBManager.accountList(findByKey("user_id"));
+        ArrayList<BankAccount> list = DBManager.accountList(userId);
         data.clear();
         data.addAll(list);
         adapter.notifyDataSetChanged();
@@ -96,8 +104,13 @@ public class AccountListActivity extends BaseActivity implements View.OnClickLis
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        if (id == R.id.addAccount) {
-            navigateTo(AddAccountActivity.class);
+        switch (id) {
+            case R.id.addAccount:
+                navigateWithParamTo(AddAccountActivity.class, userId);
+                break;
+            case  R.id.get_more:
+                navigateTo(ChooseBankActivity.class);
+                break;
         }
     }
 }

@@ -3,6 +3,7 @@ package com.perfectyang.bankaccount;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,6 +23,7 @@ public class AddAccountActivity extends BaseActivity implements View.OnClickList
     private Button save_btn, cancel_btn;
     private EditText bank_name, bank_number, bank_card_three;
     private BankAccount bankAccount = new BankAccount();
+    String userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +40,9 @@ public class AddAccountActivity extends BaseActivity implements View.OnClickList
         bank_name = findViewById(R.id.bank_name);
         bank_number = findViewById(R.id.bank_number);
         bank_card_three = findViewById(R.id.bank_card_three);
+
+        Intent intent = getIntent();
+        userId = intent.getStringExtra("user_id");
     }
 
     @Override
@@ -65,7 +70,7 @@ public class AddAccountActivity extends BaseActivity implements View.OnClickList
                 bankAccount.setBack_card_tree(bank_card_three.getText().toString().trim());
                 bankAccount.setBank_name(bank_name.getText().toString().trim());
                 bankAccount.setBank_number(bank_number.getText().toString().trim());
-                bankAccount.setUser_id(Integer.parseInt(findByKey("user_id")));
+                bankAccount.setUser_id(Integer.parseInt(userId));
                 DBManager.saveBankAccount(bankAccount);
                 showToast("添加成功");
                 finish();

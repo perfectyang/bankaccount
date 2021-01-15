@@ -24,7 +24,7 @@ import com.perfectyang.bankaccount.mydb.User;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserListActivity extends AppCompatActivity {
+public class UserListActivity extends BaseActivity {
     private Button copy;
     private TextView tvw;
     private EditText editText;
@@ -37,9 +37,14 @@ public class UserListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_list);
+        setContentView(initLayout());
         getAccountList();
         initView();
+    }
+
+    @Override
+    protected int initLayout() {
+        return R.layout.activity_user_list;
     }
 
     private void getAccountList () {
@@ -89,7 +94,8 @@ public class UserListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 User user = data.get(position);
-                Alert(user);
+                navigateWithParamTo(AccountListActivity.class, user.getId() + "");
+//                Alert(user);
             }
         });
     }
