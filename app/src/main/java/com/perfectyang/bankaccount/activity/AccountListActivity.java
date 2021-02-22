@@ -25,7 +25,8 @@ public class AccountListActivity extends BaseActivity implements View.OnClickLis
     ArrayList<BankAccount> data = new ArrayList<>();
     ClipboardManager  clipboard;
     String userId;
-    TextView get_more;
+    TextView get_more, tv_empty;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +51,8 @@ public class AccountListActivity extends BaseActivity implements View.OnClickLis
         bank_list = findViewById(R.id.bank_list);
         adapter = new BankListAdapter(this, data);
         bank_list.setAdapter(adapter);
+        tv_empty = findViewById(R.id.tv_empty);
+        bank_list.setEmptyView(tv_empty);
         bank_list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {

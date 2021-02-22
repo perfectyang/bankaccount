@@ -44,11 +44,11 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
         loginBtn = findViewById(R.id.login);
         register = findViewById(R.id.register);
-        deleteBtn = findViewById(R.id.delete);
+//        deleteBtn = findViewById(R.id.delete);
 
         loginBtn.setOnClickListener(this);
         register.setOnClickListener(this);
-        deleteBtn.setOnClickListener(this);
+//        deleteBtn.setOnClickListener(this);
     }
 
     public void onClick(View v) {
@@ -66,10 +66,11 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 login(user, pwd);
             } else if (id == R.id.register) {
                 register(user, pwd);
-            } else if (id == R.id.delete) {
-//                deletUser(user, pwd);
-//                DBManager.register(user, pwd);
             }
+//            else if (id == R.id.delete) {
+////                deletUser(user, pwd);
+////                DBManager.register(user, pwd);
+//            }
 
         }
     }
