@@ -89,7 +89,7 @@ public class FingerActivity extends BaseActivity {
         @Override
         public void onAuthenticationError(int errorCode, CharSequence errString) {
             //但多次指纹密码验证错误后，进入此方法；并且，不能短时间内调用指纹验证
-            Toast.makeText(FingerActivity.this, "这里失败了", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(FingerActivity.this, "这里失败了", Toast.LENGTH_SHORT).show();
             showAuthenticationScreen();
         }
 
@@ -144,7 +144,7 @@ public class FingerActivity extends BaseActivity {
                         Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             } else {
                 navigateToWithFlag(RegisterActivity.class, Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                showToast("识别失败");
+//                showToast("识别失败");
             }
         }
     }

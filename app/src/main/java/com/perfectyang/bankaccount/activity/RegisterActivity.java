@@ -27,10 +27,10 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
     private void initIsLogin() {
         String token = findByKey("token");
-//        if(!token.isEmpty()) {
-//            navigateToWithFlag(FingerActivity.class,
-//                    Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-//        }
+        if(!token.isEmpty()) {
+            navigateToWithFlag(FingerActivity.class,
+                    Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        }
     }
 
     @Override
@@ -81,7 +81,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             insertVal("token", username + password);
             User user = DBManager.findUser(username, password);
             insertVal("user_id", user.getId() + "");
-            navigateToWithFlag(UserListActivity.class,
+            navigateToWithFlag(AccountListActivity.class,
                     Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             showToast("登录成功");
         } else {

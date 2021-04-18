@@ -24,6 +24,7 @@ public class AddAccountActivity extends BaseActivity implements View.OnClickList
     RadioButton loadBtn, creditBtn;
     LinearLayout bank_card_three_wrap, valid_time_wrap;
     String userId;
+    int type = 1; //
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,8 +56,10 @@ public class AddAccountActivity extends BaseActivity implements View.OnClickList
                     showToast("信用卡");
                     valid_time_wrap.setVisibility(View.VISIBLE);
                     bank_card_three_wrap.setVisibility(View.VISIBLE);
+                    type = 1;
                 } else if (checkedId == creditBtn.getId()) {
                     showToast("银行卡");
+                    type = 2;
                     valid_time_wrap.setVisibility(View.GONE);
                     bank_card_three_wrap.setVisibility(View.GONE);
                 }
@@ -93,6 +96,7 @@ public class AddAccountActivity extends BaseActivity implements View.OnClickList
                 bankAccount.setBank_name(bank_name.getText().toString().trim());
                 bankAccount.setBank_number(bank_number.getText().toString().trim());
                 bankAccount.setUser_id(Integer.parseInt(userId));
+                bankAccount.set_cateory(type);
                 DBManager.saveBankAccount(bankAccount);
                 showToast("添加成功");
                 finish();

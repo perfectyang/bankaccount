@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".frag_bank.CreditCardFragment"
     android:padding="10dp"
+    android:orientation="vertical"
     android:layout_margin="10dp">
 
     <ListView
@@ -14,5 +15,15 @@
         android:divider="@null"
         android:dividerHeight="10dp"
         />
+
+    <TextView
+        android:id="@+id/tv_empty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="暂无数据"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:layout_marginTop="250dp"/>
 
 </LinearLayout>

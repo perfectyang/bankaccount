@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -78,15 +79,29 @@ public class BankListAdapter extends BaseAdapter {
                 setCopy(finalHolder.valid_time.getText().toString());
             }
         });
+
+        int category = curUser.get_category();
+        if (category == 2) {
+            holder.bank_card_three_wrap.setVisibility(View.GONE);
+            holder.valid_time_wrap.setVisibility(View.GONE);
+            holder.card_mark.setText("储蓄卡");
+        } else {
+            holder.card_mark.setText("信用卡");
+        }
+
         return convertView;
     }
     class ViewHolder{
-        TextView bank_name,bank_number, valid_time, bank_card_three;
+        TextView bank_name,bank_number, valid_time, bank_card_three, card_mark;
+        LinearLayout bank_card_three_wrap, valid_time_wrap;
         public ViewHolder(View view){
             bank_name = view.findViewById(R.id.bank_name);
             bank_number = view.findViewById(R.id.bank_number);
             valid_time = view.findViewById(R.id.valid_time);
+            card_mark = view.findViewById(R.id.card_mark);
             bank_card_three = view.findViewById(R.id.bank_card_three);
+            bank_card_three_wrap = view.findViewById(R.id.bank_card_three_wrap);
+            valid_time_wrap = view.findViewById(R.id.valid_time_wrap);
         }
     }
     private void setCopy (String content) {

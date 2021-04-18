@@ -13,7 +13,7 @@ public class CreditCardFragment extends BaseCardFragment {
     @Override
     public void loadData () {
         super.loadData();
-        List<BankAccount> inlist = DBManager.accountList(userId);
+        List<BankAccount> inlist = DBManager.accountList(userId, 1);
         bankAccountList.addAll(inlist);
         adapter.notifyDataSetChanged();
     }

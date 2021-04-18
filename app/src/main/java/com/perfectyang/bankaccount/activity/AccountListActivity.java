@@ -42,8 +42,10 @@ public class AccountListActivity extends BaseActivity implements View.OnClickLis
     private void getDataList() {
         Intent intent = getIntent();
         userId = intent.getStringExtra("user_id");
-//        data = DBManager.accountList(findByKey("user_id"));
-        data = DBManager.accountList(userId);
+        if (userId == null) {
+            userId = findByKey("user_id");
+        }
+        data = DBManager.accountList(userId, 0);
 
     }
 
@@ -85,7 +87,7 @@ public class AccountListActivity extends BaseActivity implements View.OnClickLis
     @Override
     protected void onResume() {
         super.onResume();
-        ArrayList<BankAccount> list = DBManager.accountList(userId);
+        ArrayList<BankAccount> list = DBManager.accountList(userId, 0);
         data.clear();
         data.addAll(list);
         adapter.notifyDataSetChanged();

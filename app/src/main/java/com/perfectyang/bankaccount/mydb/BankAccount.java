@@ -7,6 +7,8 @@ public class BankAccount {
     private String bank_number;
     private String valid_time;
     private String back_card_tree;
+    private int category; // bank type
+
 
 
     public BankAccount () {}
@@ -19,13 +21,14 @@ public class BankAccount {
         this.back_card_tree = back_card_tree;
     }
 
-    public BankAccount(int user_id, String bank_name, String bank_number, String valid_time, String back_card_tree, int id) {
+    public BankAccount(int user_id, String bank_name, String bank_number, String valid_time, String back_card_tree, int id, int category) {
         this.user_id = user_id;
         this.bank_name = bank_name;
         this.bank_number = bank_number;
         this.valid_time = valid_time;
         this.back_card_tree = back_card_tree;
         this.id = id;
+        this.category = category;
     }
 
     public int getId() {
@@ -52,6 +55,9 @@ public class BankAccount {
         return back_card_tree;
     }
 
+    public int get_category() {
+        return category;
+    }
     public void setUser_id(int user_id) {
         this.user_id = user_id;
     }
@@ -70,6 +76,10 @@ public class BankAccount {
 
     public void setBack_card_tree(String back_card_tree) {
         this.back_card_tree = back_card_tree;
+    }
+
+    public void set_cateory(int category) {
+        this.category = category;
     }
 
 

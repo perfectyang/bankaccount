@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,7 +23,7 @@ public class BaseCardFragment extends Fragment implements View.OnClickListener {
     BankListAdapter adapter;
     List<BankAccount> bankAccountList;
     ListView listView;
-
+    TextView tv_empty;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +34,7 @@ public class BaseCardFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_card, container, false);
         listView = view.findViewById(R.id.card_list);
+        tv_empty = view.findViewById(R.id.tv_empty);
         loadData();
         return view;
     }
@@ -41,6 +43,7 @@ public class BaseCardFragment extends Fragment implements View.OnClickListener {
         bankAccountList = new ArrayList<>();
         adapter = new BankListAdapter(getContext(), bankAccountList);
         listView.setAdapter(adapter);
+        listView.setEmptyView(tv_empty);
     }
 
     @Override

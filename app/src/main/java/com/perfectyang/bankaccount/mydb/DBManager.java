@@ -86,6 +86,7 @@ public class DBManager {
         values.put("bank_number", bankAccount.getBank_number());
         values.put("valid_time", bankAccount.getValid_time());
         values.put("back_card_three", bankAccount.getBack_card_tree());
+        values.put("category", bankAccount.get_category());
         database.insert("bankAccount", null, values);
     }
 
@@ -95,8 +96,11 @@ public class DBManager {
      * @return ArrayList
      */
 
-    public static ArrayList<BankAccount> accountList (String userId) {
-        String sql = "select * from bankAccount where user_id=?";
+    public static ArrayList<BankAccount> accountList (String userId, int type) {
+        String sql = "select * from bankAccount where user_id=? and category=" + type;
+        if (type == 0) {
+          sql = "select * from bankAccount where user_id=?";
+        }
         Cursor cursor = database.rawQuery(sql, new String[]{userId});
         ArrayList<BankAccount> data = new ArrayList<>();
         while (cursor.moveToNext()) {
@@ -106,7 +110,8 @@ public class DBManager {
                     cursor.getString(cursor.getColumnIndex("bank_number")),
                     cursor.getString(cursor.getColumnIndex("valid_time")),
                     cursor.getString(cursor.getColumnIndex("back_card_three")),
-                    cursor.getInt(cursor.getColumnIndex("id"))
+                    cursor.getInt(cursor.getColumnIndex("id")),
+                    cursor.getInt(cursor.getColumnIndex("category"))
             );
             data.add(bank);
         }
