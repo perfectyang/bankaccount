@@ -57,7 +57,7 @@ public class BankListAdapter extends BaseAdapter {
         }
         BankAccount curUser = mDatas.get(position);
         holder.bank_name.setText(curUser.getBank_name());
-        holder.bank_number.setText(curUser.getBank_number());
+        holder.bank_number.setText(curUser.getBank_number() + "  (" + curUser.getBank_number().length() + "位)");
         holder.valid_time.setText(curUser.getValid_time());
         holder.bank_card_three.setText(curUser.getBack_card_tree());
         ViewHolder finalHolder = holder;
@@ -70,7 +70,7 @@ public class BankListAdapter extends BaseAdapter {
         holder.bank_number.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setCopy(curUser.getBank_name() + "： " + finalHolder.bank_number.getText().toString() + "  杨国唯");
+                setCopy(curUser.getBank_name() + "： " + curUser.getBank_number() + "  杨国唯");
             }
         });
         holder.valid_time.setOnClickListener(new View.OnClickListener() {
@@ -87,6 +87,8 @@ public class BankListAdapter extends BaseAdapter {
             holder.card_mark.setText("储蓄卡");
         } else {
             holder.card_mark.setText("信用卡");
+            holder.bank_card_three_wrap.setVisibility(View.VISIBLE);
+            holder.valid_time_wrap.setVisibility(View.VISIBLE);
         }
 
         return convertView;

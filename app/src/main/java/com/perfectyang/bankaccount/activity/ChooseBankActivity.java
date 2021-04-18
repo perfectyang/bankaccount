@@ -38,9 +38,30 @@ public class ChooseBankActivity extends BaseActivity {
         CreditCardFragment creditCardFragment = new CreditCardFragment(userId);
         mFragment.add(cashCardFragment);
         mFragment.add(creditCardFragment);
-        chooseBankAdapter = new ChooseBankAdapter(getSupportFragmentManager(), mFragment);
+        chooseBankAdapter = new ChooseBankAdapter(getSupportFragmentManager(), mFragment, cashCardFragment.getLen(), creditCardFragment.getLen());
         view_pager.setAdapter(chooseBankAdapter);
         tab_title.setupWithViewPager(view_pager);
+        tab_title.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+               int idx = tab.getPosition();
+               if (idx == 0) {
+                   tab_title.getTabAt(0).setText("银行卡" + cashCardFragment.getLen());
+               } else {
+                   tab_title.getTabAt(idx).setText("信用卡" + creditCardFragment.getLen());
+               }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
     }
 
     @Override

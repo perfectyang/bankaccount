@@ -7,6 +7,7 @@ import java.util.List;
 
 public class CreditCardFragment extends BaseCardFragment {
     String userId;
+    public int len;
     public CreditCardFragment (String userId) {
         this.userId = userId;
     }
@@ -16,5 +17,10 @@ public class CreditCardFragment extends BaseCardFragment {
         List<BankAccount> inlist = DBManager.accountList(userId, 1);
         bankAccountList.addAll(inlist);
         adapter.notifyDataSetChanged();
+        len = inlist.size();
+    }
+
+    public int getLen () {
+        return len;
     }
 }

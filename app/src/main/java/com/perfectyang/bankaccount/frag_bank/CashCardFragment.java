@@ -6,6 +6,7 @@ import java.util.List;
 
 public class CashCardFragment extends BaseCardFragment {
     String userId;
+    public int len;
     public CashCardFragment (String userId) {
         this.userId = userId;
     }
@@ -16,6 +17,11 @@ public class CashCardFragment extends BaseCardFragment {
         List<BankAccount> inlist = DBManager.accountList(userId, 2);
         bankAccountList.addAll(inlist);
         adapter.notifyDataSetChanged();
+        len = inlist.size();
+    }
+
+    public int getLen () {
+        return len;
     }
 
 }
