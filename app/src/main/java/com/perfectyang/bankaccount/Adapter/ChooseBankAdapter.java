@@ -44,11 +44,12 @@ public class ChooseBankAdapter extends FragmentPagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
 //        Fragment fragment = mFragement.get(position);
-        if (position == 0) {
-            return title[position] + num1;
-        } else {
-            return title[position] + num2;
-        }
+//        if (position == 0) {
+//            return title[position] + num1;
+//        } else {
+//            return title[position] + num2;
+//        }
+        return title[position];
     }
     public void setPageTitle(int position, String t) {
         title[position] = t;
