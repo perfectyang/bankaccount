@@ -70,7 +70,7 @@ public class BankListAdapter extends BaseAdapter {
         holder.bank_number.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setCopy(finalHolder.bank_number.getText().toString());
+                setCopy(curUser.getBank_name() + "： " + finalHolder.bank_number.getText().toString() + "  杨国唯");
             }
         });
         holder.valid_time.setOnClickListener(new View.OnClickListener() {
@@ -114,6 +114,6 @@ public class BankListAdapter extends BaseAdapter {
         ClipData clip = ClipData.newPlainText(content, content);
         //传入clipdata对象.
         clipboard.setPrimaryClip(clip);
-        Toast.makeText(context, "复制成功" + content, Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "复制成功:" + content, Toast.LENGTH_SHORT).show();
     }
 }

@@ -3,6 +3,7 @@ package com.perfectyang.bankaccount.activity;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,6 +28,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
     private void initIsLogin() {
         String token = findByKey("token");
+        Log.d("token", token);
         if(!token.isEmpty()) {
             navigateToWithFlag(FingerActivity.class,
                     Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -78,7 +80,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     private void login (String username, String password) {
         boolean bool = DBManager.login(username, password);
         if (bool) {
-            insertVal("token", username + password);
+            insertVal("token", username + "-" + password);
             User user = DBManager.findUser(username, password);
             insertVal("user_id", user.getId() + "");
             navigateToWithFlag(AccountListActivity.class,
