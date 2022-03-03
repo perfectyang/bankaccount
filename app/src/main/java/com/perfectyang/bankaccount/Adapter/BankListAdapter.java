@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +17,8 @@ import androidx.annotation.NonNull;
 
 import com.perfectyang.bankaccount.R;
 import com.perfectyang.bankaccount.mydb.BankAccount;
+import com.perfectyang.bankaccount.utils.ShareText;
+
 import java.util.List;
 
 public class BankListAdapter extends BaseAdapter {
@@ -79,6 +82,14 @@ public class BankListAdapter extends BaseAdapter {
                 setCopy(finalHolder.valid_time.getText().toString());
             }
         });
+        holder.share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShareText.share(curUser.getBank_name() + "： " + curUser.getBank_number() + "  杨国唯", context);
+            }
+        });
+
+
 
         int category = curUser.get_category();
         if (category == 2) {
@@ -95,6 +106,7 @@ public class BankListAdapter extends BaseAdapter {
     }
     class ViewHolder{
         TextView bank_name,bank_number, valid_time, bank_card_three, card_mark;
+        Button share;
         LinearLayout bank_card_three_wrap, valid_time_wrap;
         public ViewHolder(View view){
             bank_name = view.findViewById(R.id.bank_name);
@@ -104,6 +116,7 @@ public class BankListAdapter extends BaseAdapter {
             bank_card_three = view.findViewById(R.id.bank_card_three);
             bank_card_three_wrap = view.findViewById(R.id.bank_card_three_wrap);
             valid_time_wrap = view.findViewById(R.id.valid_time_wrap);
+            share = view.findViewById(R.id.share);
         }
     }
     private void setCopy (String content) {

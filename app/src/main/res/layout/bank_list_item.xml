@@ -5,6 +5,7 @@
     android:background="@drawable/login_bg"
     android:padding="10dp"
     android:layout_margin="10dp"
+    android:layout_marginBottom="100dp"
     >
     <!--  银行卡标识 -->
     <TextView
@@ -14,7 +15,10 @@
         android:layout_height="wrap_content"
         android:textColor="@android:color/holo_red_light"
         android:textSize="14sp"
+        android:text="标识"
         />
+
+
     <LinearLayout
         android:id="@+id/bank_name_wrap"
         android:layout_width="match_parent"
@@ -34,65 +38,86 @@
             android:textColor="@color/black"
             />
     </LinearLayout>
+
     <LinearLayout
-        android:layout_below="@id/bank_name_wrap"
         android:id="@+id/bank_number_wrap"
         android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bank_name_wrap"
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="银行卡号:"
-            android:textColor="@color/black"
-            />
+            android:textColor="@color/black" />
+
         <TextView
             android:id="@+id/bank_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:textColor="@color/black"
-            />
+            android:textColor="@color/black" />
     </LinearLayout>
+
     <LinearLayout
-        android:layout_below="@+id/bank_number_wrap"
         android:id="@+id/valid_time_wrap"
         android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bank_number_wrap"
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="有效期:"
-            android:textColor="@color/black"
-            />
+            android:textColor="@color/black" />
+
         <TextView
             android:id="@+id/valid_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:textColor="@color/black"
-            />
+            android:textColor="@color/black" />
     </LinearLayout>
+
     <LinearLayout
-        android:layout_below="@+id/valid_time_wrap"
         android:id="@+id/bank_card_three_wrap"
         android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/valid_time_wrap"
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="卡背面三位:"
-            android:textColor="@color/black"
-            />
+            android:textColor="@color/black" />
+
         <TextView
             android:id="@+id/bank_card_three"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:textColor="@color/black"
-            />
+            android:textColor="@color/black" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@+id/bank_card_three_wrap"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="#ff6161"
+            android:text="分享"
+            android:textColor="#fff" />
 
     </LinearLayout>
 
