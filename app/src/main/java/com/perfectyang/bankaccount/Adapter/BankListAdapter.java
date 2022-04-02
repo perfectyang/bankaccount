@@ -105,8 +105,7 @@ public class BankListAdapter extends BaseAdapter {
         return convertView;
     }
     class ViewHolder{
-        TextView bank_name,bank_number, valid_time, bank_card_three, card_mark;
-        Button share;
+        TextView bank_name,bank_number, valid_time, bank_card_three, card_mark, share;
         LinearLayout bank_card_three_wrap, valid_time_wrap;
         public ViewHolder(View view){
             bank_name = view.findViewById(R.id.bank_name);

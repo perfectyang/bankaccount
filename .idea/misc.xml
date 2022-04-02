@@ -8,13 +8,13 @@
         <entry key="app/src/main/res/drawable/login_bg.xml" value="0.2375" />
         <entry key="app/src/main/res/drawable/user_info.xml" value="0.172" />
         <entry key="app/src/main/res/layout/activity_account_list.xml" value="0.1585144927536232" />
-        <entry key="app/src/main/res/layout/activity_add_account.xml" value="0.1585144927536232" />
+        <entry key="app/src/main/res/layout/activity_add_account.xml" value="0.18446601941747573" />
         <entry key="app/src/main/res/layout/activity_choose_bank.xml" value="0.18342391304347827" />
         <entry key="app/src/main/res/layout/activity_finger.xml" value="0.161231884057971" />
         <entry key="app/src/main/res/layout/activity_person.xml" value="0.375" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.18342391304347827" />
         <entry key="app/src/main/res/layout/bank_item.xml" value="0.18" />
-        <entry key="app/src/main/res/layout/bank_list_item.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/bank_list_item.xml" value="0.9" />
         <entry key="app/src/main/res/layout/date_time.xml" value="0.18342391304347827" />
         <entry key="app/src/main/res/layout/fragment_card.xml" value="0.18342391304347827" />
         <entry key="app/src/main/res/layout/no_data.xml" value="0.18342391304347827" />

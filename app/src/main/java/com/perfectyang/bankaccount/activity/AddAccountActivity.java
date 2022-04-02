@@ -16,9 +16,8 @@ import com.perfectyang.bankaccount.mydb.DBManager;
 import com.perfectyang.bankaccount.utils.DialogTimer;
 
 public class AddAccountActivity extends BaseActivity implements View.OnClickListener {
-    private TextView valid_time;
     private Button save_btn, cancel_btn;
-    private EditText bank_name, bank_number, bank_card_three;
+    private EditText bank_name, bank_number, bank_card_three, valid_time;
     private BankAccount bankAccount = new BankAccount();
     RadioGroup radioGroup;
     RadioButton loadBtn, creditBtn;
@@ -79,24 +78,25 @@ public class AddAccountActivity extends BaseActivity implements View.OnClickList
     public void onClick(View v) {
         int id = v.getId();
         switch (id) {
-            case R.id.valid_time:
-                DialogTimer dialogTimer = new DialogTimer(this);
-                dialogTimer.show();
-                dialogTimer.setOnEnsureListener(new DialogTimer.OnEnsureListener() {
-                    @Override
-                    public void onEnsure(int year, String month, String day) {
-                        valid_time.setText(month + "" + day);
-                        bankAccount.setValid_time(month + "" + day);
-                        showToast(year + "====" + month + "====" + day);
-                    }
-                });
-                break;
+//            case R.id.valid_time:
+//                DialogTimer dialogTimer = new DialogTimer(this);
+//                dialogTimer.show();
+//                dialogTimer.setOnEnsureListener(new DialogTimer.OnEnsureListener() {
+//                    @Override
+//                    public void onEnsure(int year, String month, String day) {
+//                        valid_time.setText(month + "" + day);
+//                        bankAccount.setValid_time(month + "" + day);
+//                        showToast(year + "====" + month + "====" + day);
+//                    }
+//                });
+//                break;
             case R.id.save_btn:
                 bankAccount.setBack_card_tree(bank_card_three.getText().toString().trim());
                 bankAccount.setBank_name(bank_name.getText().toString().trim());
                 bankAccount.setBank_number(bank_number.getText().toString().trim());
                 bankAccount.setUser_id(Integer.parseInt(userId));
                 bankAccount.set_cateory(type);
+                bankAccount.setValid_time(valid_time.getText().toString().trim());
                 DBManager.saveBankAccount(bankAccount);
                 showToast("添加成功");
                 finish();
