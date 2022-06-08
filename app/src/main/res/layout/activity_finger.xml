@@ -6,15 +6,15 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
+    android:background="@color/colorPrimary"
     tools:context=".activity.FingerActivity">
 
 
     <ImageView
         android:id="@+id/btn_activity_main_finger"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@mipmap/finger"
-        />
+        android:layout_width="101dp"
+        android:layout_height="90dp"
+        android:background="@mipmap/finger" />
 
     <TextView
         android:id="@+id/textView"
@@ -22,7 +22,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="请点击指纹识别"
-        android:textSize="16sp" />
+        android:textColor="@color/teal_200"
+        android:textSize="20sp" />
 
 <!--    <Button-->
 <!--        android:id="@+id/btn_activity_main_finger"-->

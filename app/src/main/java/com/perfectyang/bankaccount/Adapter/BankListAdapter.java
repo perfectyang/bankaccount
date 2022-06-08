@@ -73,7 +73,7 @@ public class BankListAdapter extends BaseAdapter {
         holder.bank_number.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setCopy(curUser.getBank_name() + "： " + curUser.getBank_number() + "  杨国唯");
+                setCopy(curUser.getBank_number());
             }
         });
         holder.valid_time.setOnClickListener(new View.OnClickListener() {

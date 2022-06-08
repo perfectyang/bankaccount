@@ -19,13 +19,13 @@ import com.perfectyang.bankaccount.mydb.DBManager;
 import java.util.ArrayList;
 
 public class AccountListActivity extends BaseActivity implements View.OnClickListener {
-    ImageButton imageButton, user_info;
+    ImageButton user_info2;
     ListView bank_list;
     BankListAdapter adapter;
     ArrayList<BankAccount> data = new ArrayList<>();
     ClipboardManager  clipboard;
     String userId;
-    TextView get_more, tv_empty;
+    TextView get_more, tv_empty, imageButton, user_info;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,8 @@ public class AccountListActivity extends BaseActivity implements View.OnClickLis
         get_more.setOnClickListener(this);
         user_info = findViewById(R.id.user_info);
         user_info.setOnClickListener(this);
+        user_info2 = findViewById(R.id.user_info2);
+        user_info2.setOnClickListener(this);
         getDataList();
         initView();
     }
@@ -107,7 +109,8 @@ public class AccountListActivity extends BaseActivity implements View.OnClickLis
             case R.id.addAccount:
                 navigateWithParamTo(AddAccountActivity.class, userId);
                 break;
-            case  R.id.get_more:
+            case R.id.get_more:
+            case R.id.user_info2:
                 navigateWithParamTo(ChooseBankActivity.class, userId);
                 break;
             case R.id.user_info:

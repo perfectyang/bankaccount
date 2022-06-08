@@ -6,27 +6,29 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp"
+    android:background="@color/teal_700"
     tools:context=".activity.AddAccountActivity">
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="银行卡添加"
         android:textSize="20sp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:textStyle="bold"
-        android:textColor="#fff"
+        android:paddingTop="25dp"
+        android:paddingBottom="25dp"
+        android:layout_gravity="center"
+        android:textColor="#FBC02D"
         />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/grey_f3f3f3"
-        />
+<!--    <View-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="1dp"-->
+<!--        android:background="@color/grey_f3f3f3"-->
+<!--        />-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:gravity="center_vertical"
+        android:background="@color/colorPrimaryDark"
         >
         <TextView
             android:layout_width="110dp"
@@ -178,14 +180,16 @@
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp">
+        android:layout_marginTop="100dp">
         <Button
             android:id="@+id/cancel_btn"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:padding="10dp"
+            android:background="@color/grey_7D7D7D"
             android:text="取消"
+            android:layout_marginRight="10dp"
             />
         <Button
             android:id="@+id/save_btn"
@@ -194,6 +198,7 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:textColor="@color/white"
+            android:background="@color/purple_700"
             android:text="保存"
             />
     </LinearLayout>

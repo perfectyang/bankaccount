@@ -4,41 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     tools:context=".activity.AccountListActivity">
 
     <RelativeLayout
         android:id="@+id/account_title"
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="60dp">
+
         <TextView
             android:id="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:layout_centerVertical="true"
-            android:text="银行卡列表"
-            />
-        <TextView
-            android:id="@+id/get_more"
-            android:layout_alignParentRight="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:textSize="18sp"
+            android:text="银行卡列表" />
+
+        <TextView
+            android:id="@+id/get_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:text="更多"
             android:layout_marginRight="20dp"
-            android:textColor="@color/white"
-            />
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/user_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/get_more"
+            android:layout_marginRight="20dp"
+            android:text="用户信息"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/addAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/user_info"
+            android:layout_marginRight="20dp"
+            android:text="添加银行卡"
+            android:textColor="@color/white" />
     </RelativeLayout>
+
     <ListView
         android:id="@+id/bank_list"
-        android:layout_below="@+id/account_title"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="none"
+        android:layout_below="@+id/account_title"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:divider="@null"
-        android:layout_margin="10dp"
         android:dividerHeight="6dp"
-        />
+        android:scrollbars="none" />
+
     <TextView
         android:id="@+id/tv_empty"
         android:layout_width="match_parent"
@@ -49,27 +74,36 @@
         android:textColor="@color/white"
         android:layout_marginTop="250dp"/>
 
-    <ImageButton
-        android:id="@+id/addAccount"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/add"
-        android:layout_above="@+id/user_info"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/add_bg"
-        />
-    <ImageButton
-        android:id="@+id/user_info"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/user_info"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/add_bg"
-        android:layout_alignParentBottom="true"
-        />
+<!--    <ImageButton-->
+<!--        android:id="@+id/addAccount"-->
+<!--        android:layout_width="50dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_above="@+id/user_info"-->
+<!--        android:layout_alignParentLeft="true"-->
+<!--        android:layout_marginRight="10dp"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        android:background="@drawable/add_bg"-->
+<!--        android:src="@drawable/add" />-->
+<!--    <ImageButton-->
+<!--        android:id="@+id/user_info"-->
+<!--        android:layout_width="50dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:src="@drawable/user_info"-->
+<!--        android:layout_alignParentLeft="true"-->
+<!--        android:layout_marginRight="10dp"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        android:background="@drawable/add_bg"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        />-->
 
+    <ImageButton
+        android:id="@+id/user_info2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/login_btn_bg2"
+        android:src="@drawable/more_bank" />
 </RelativeLayout>
